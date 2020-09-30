@@ -3,3 +3,9 @@ node_modules
 
 # IDE
 .idea
+
+# nuxt
+.nuxt
+
+# tailwind
+tailwind.full.config.js
