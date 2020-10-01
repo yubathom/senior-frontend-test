@@ -1,11 +1,14 @@
 <template>
   <div
-    class="office-card max-w-xs mx-auto flex-col bg-white rounded-b-lg mt-6"
-    :class="{ 'office-card--active': active }"
+    class="office-card flex-col bg-white rounded-b-lg mt-6 transition-opacity"
+    :class="{
+      'office-card--active': active,
+      'opacity-0': deleted
+    }"
   >
     <article
       class="flex items-center justify-between py-12 px-6 rounded-lg shadow-xl text-white cursor-pointer"
-      :class="`bg-${mainColor}`"
+      :class="`bg-${color}`"
       @click="active = !active"
     >
       <div>
@@ -13,7 +16,7 @@
         <p class="text-base">{{ address }}</p>
       </div>
       <icon-arrow
-        class="transition duration-300 transform"
+        class="duration-300 transform"
         :class="{
           '-rotate-180': active
         }"
@@ -37,10 +40,10 @@
       <section
         class="border-t w-full flex justify-between mt-2 pt-2 pb-1 text-xs"
       >
-        <button class="flex items-center">
+        <button class="flex items-center" @click.prevent="edit(id)">
           <icon-pencil /><span class="ml-2">EDIT</span>
         </button>
-        <button class="flex items-center">
+        <button class="flex items-center" @click.prevent="remove(id)">
           <icon-trash /><span class="ml-2 text-accent-red">DELETE</span>
         </button>
       </section>
@@ -51,6 +54,10 @@
 export default {
   name: 'OfficeCard',
   props: {
+    id: {
+      type: Number,
+      required: true
+    },
     title: {
       type: String,
       required: true
@@ -75,12 +82,12 @@ export default {
       type: String,
       required: true
     },
-    colors: {
-      type: Array,
-      required: true
+    color: {
+      type: String,
+      default: 'primary-grey'
     },
-    colorIndex: {
-      type: Number,
+    deleted: {
+      type: Boolean,
       required: true
     }
   },
@@ -90,14 +97,19 @@ export default {
       activeDelayed: false
     }
   },
-  computed: {
-    mainColor () {
-      return this.colors[this.colorIndex]
-    }
-  },
   watch: {
     active (state) {
       setTimeout(() => (this.activeDelayed = state), 100)
+    }
+  },
+  methods: {
+    remove (id) {
+      this.$emit('delete', id)
+    },
+    edit (id) {
+      this.$router.push({
+        path: `/office/${id}`
+      })
     }
   }
 }

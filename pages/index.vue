@@ -1,50 +1,39 @@
 <template>
-  <div>
-    <section>
-      <office-card
-        :id="1"
-        title="Headquarters"
-        address="3763 W. Dallas St."
-        name="Hellena John"
-        role="Software Tester"
-        email="geogia.young@example.com"
-        phone="(808) 555-0111"
-        :colorIndex="0"
-        :colors="colors"
-        @delete="deleteCard"
-      />
-      <office-card
-        :id="2"
-        title="Headquarters"
-        address="3763 W. Dallas St."
-        name="Hellena John"
-        role="Software Tester"
-        email="geogia.young@example.com"
-        phone="(808) 555-0111"
-        :colorIndex="3"
-        :colors="colors"
-      />
-    </section>
+  <div class="max-w-xs mx-auto">
+    <nuxt-link tag="div" :to="{ path: '/office/create' }" class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer">
+      <p>Add New Location</p>
+      <icon-plus />
+    </nuxt-link>
+    <ul>
+      <li v-for="user in users" :key="user.id">
+        <office-card v-bind="user" @delete="deleteCard" />
+      </li>
+    </ul>
   </div>
 </template>
 <script>
-const colors = [
-  'accent-yellow',
-  'accent-red',
-  'accent-blue',
-  'primary-grey',
-  'primary-darkblue'
-]
+import { users } from '~/static/data'
 
 export default {
   name: 'Ofices',
   data () {
     return {
-      colors
+      users: []
     }
   },
   methods: {
-    deleteCard (id) {}
+    deleteCard (toDeleteId) {
+      const toDeleteIndex = this.users.findIndex(({ id }) => id === toDeleteId)
+      this.users[toDeleteIndex].deleted = true
+
+      setTimeout(() => this.users = this.users.filter(({ id }) => id !== toDeleteId), 300)
+    }
+  },
+  created () {
+    this.users = users.map(item => {
+      item.deleted = false
+      return item
+    })
   }
 }
 </script>

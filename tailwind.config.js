@@ -1,8 +1,7 @@
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ['ProximaNova', 'sans-serif'],
-      serif: ['ProximaNova', 'sans-serif']
+      sans: ['ProximaNova', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif']
     },
     extend: {
       colors: {
