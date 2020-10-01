@@ -1,0 +1,16 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '~/assets/fonts/fonts.scss';
+
+@layer base {
+  body {
+    @apply bg-primary-lightgrey;
+  }
+  a {
+    @apply text-accent-blue;
+    &:hover {
+      @apply underline
+    }
+  }
+}

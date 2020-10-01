@@ -7,7 +7,5 @@ module.exports = {
 	parserOptions: {
 		parser: "babel-eslint",
 	},
-	extends: ["plugin:nuxt/recommended"],
-	plugins: [],
-	rules: {}
-};
+	extends: ["plugin:nuxt/recommended"]
+}

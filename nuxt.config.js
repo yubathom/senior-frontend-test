@@ -22,7 +22,7 @@ export default {
   },
   buildModules: ["@nuxtjs/eslint-module", "@nuxtjs/tailwindcss"],
 
-  css: ["~/assets/scss/tailwind.scss"],
+  css: ["~/assets/tailwind.scss"],
   modules: ["nuxt-purgecss"],
   purgeCSS: {
     mode: "postcss",
