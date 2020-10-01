@@ -20,7 +20,7 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
-  buildModules: ["@nuxtjs/eslint-module", "@nuxtjs/tailwindcss"],
+  buildModules: ["@nuxtjs/tailwindcss"],
 
   css: ["~/assets/tailwind.scss"],
   modules: ["nuxt-purgecss"],
