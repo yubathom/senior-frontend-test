@@ -1,6 +1,6 @@
 <template>
   <div
-    class="office-card flex-col bg-white rounded-b-lg mt-6 transition-opacity"
+    class="office-card flex-col rounded-b-lg mt-6 transition-opacity rounded-t-lg bg-white"
     :class="{
       'office-card--active': active,
       'opacity-0': deleted
@@ -16,7 +16,7 @@
         <p class="text-base">{{ address }}</p>
       </div>
       <icon-arrow
-        class="duration-300 transform"
+        class="transform duration-300"
         :class="{
           '-rotate-180': active
         }"
@@ -38,7 +38,7 @@
         <p>{{ phone }}</p>
       </section>
       <section
-        class="border-t w-full flex justify-between mt-2 pt-2 pb-1 text-xs"
+        class="border-t w-full flex justify-between mt-2 pt-2 pb-1 text-xs text-primary-grey"
       >
         <button class="flex items-center" @click.prevent="edit(id)">
           <icon-pencil /><span class="ml-2">EDIT</span>
@@ -107,9 +107,7 @@ export default {
       this.$emit('delete', id)
     },
     edit (id) {
-      this.$router.push({
-        path: `/office/${id}`
-      })
+      this.$emit('edit', id)
     }
   }
 }

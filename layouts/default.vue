@@ -1,6 +1,8 @@
 <template>
-  <div class="w-screen accent-background">
+  <div class="accent-background py-32">
+    <!-- <ui-tooltip /> -->
     <app-header />
-    <nuxt />
+    <nuxt class="max-w-xs mx-auto"/>
+    <app-footer />
   </div>
 </template>

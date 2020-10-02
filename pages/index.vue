@@ -1,12 +1,16 @@
 <template>
-  <div class="max-w-xs mx-auto">
-    <nuxt-link tag="div" :to="{ path: '/office/create' }" class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer">
+  <div>
+    <nuxt-link
+      tag="div"
+      :to="{ path: '/office/create' }"
+      class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer"
+    >
       <p>Add New Location</p>
       <icon-plus />
     </nuxt-link>
     <ul>
       <li v-for="user in users" :key="user.id">
-        <office-card v-bind="user" @delete="deleteCard" />
+        <office-card v-bind="user" @delete="deleteCard" @edit="editCard"/>
       </li>
     </ul>
   </div>
@@ -26,7 +30,17 @@ export default {
       const toDeleteIndex = this.users.findIndex(({ id }) => id === toDeleteId)
       this.users[toDeleteIndex].deleted = true
 
-      setTimeout(() => this.users = this.users.filter(({ id }) => id !== toDeleteId), 300)
+      setTimeout(
+        () => (this.users = this.users.filter(({ id }) => id !== toDeleteId)),
+        300
+      )
+    },
+    editCard (toEditCardId) {
+      const query = this.users.find(({ id }) => id === toEditCardId)
+      this.$router.push({
+        path: `/office/${toEditCardId}`,
+        query
+      })
     }
   },
   created () {
