@@ -1,9 +1,6 @@
 export default {
   mode: "universal",
   components: true,
-  /*
-   * Headers of the page
-   */
   head: {
     title: process.env.npm_package_name || "",
     meta: [
