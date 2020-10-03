@@ -10,7 +10,7 @@
     </nuxt-link>
     <ul>
       <li v-for="user in users" :key="user.id">
-        <office-card v-bind="user" @delete="deleteCard" @edit="editCard"/>
+        <office-card v-bind="user" @delete="deleteCard" @edit="editCard" />
       </li>
     </ul>
   </div>

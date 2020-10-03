@@ -3,11 +3,12 @@
     <li
       class="flex justify-center items-center shadow-lg rounded-lg h-32 w-full mt-2 mb-4 cursor-pointer transition-colors duration-300"
       :class="activeBgColor"
-      @click="open=!open"
+      @click="open = !open"
     >
       <p class="mr-2 text-white font-bold">Select Color</p>
       <icon-arrow
-        class="transform scale-50" :stroke-width="3"
+        class="transform scale-50"
+        :stroke-width="3"
         :class="{
           'rotate-180': !open,
           'rotate-0': open
@@ -15,17 +16,18 @@
       />
     </li>
     <transition-group name="grow">
-      <template  v-if="open">
-      <li v-for="(color, index) in colors" :key="index">
-        <button
-          class="flex justify-center items-center h-32 w-full my-2 rounded-lg" :class="`bg-${color}`"
-          @click.prevent="change(index)"
-        >
-          <icon-check
-            v-if="index === selectedIndex"
-            class="transform scale-125"
-          />
-        </button>
+      <template v-if="open">
+        <li v-for="(color, index) in colors" :key="index">
+          <button
+            class="flex justify-center items-center h-32 w-full my-2 rounded-lg"
+            :class="`bg-${color}`"
+            @click.prevent="change(index)"
+          >
+            <icon-check
+              v-if="index === selectedIndex"
+              class="transform scale-125"
+            />
+          </button>
         </li>
       </template>
     </transition-group>
@@ -42,11 +44,11 @@ export default {
     colors: {
       type: Array,
       default: () => [
-        "accent-yellow",
-        "accent-red",
-        "accent-blue",
-        "primary-grey",
-        "primary-darkblue"
+        'accent-yellow',
+        'accent-red',
+        'accent-blue',
+        'primary-grey',
+        'primary-darkblue'
       ]
     }
   },
@@ -58,7 +60,9 @@ export default {
   },
   computed: {
     activeBgColor () {
-      return this.open ? 'bg-primary-grey' : `bg-${this.colors[this.selectedIndex]}`
+      return this.open
+        ? 'bg-primary-grey'
+        : `bg-${this.colors[this.selectedIndex]}`
     }
   },
   methods: {
@@ -69,7 +73,9 @@ export default {
     }
   },
   created () {
-    this.selectedIndex = this.colors.findIndex(color => color === this.mainColor)
+    this.selectedIndex = this.colors.findIndex(
+      color => color === this.mainColor
+    )
   }
 }
 </script>

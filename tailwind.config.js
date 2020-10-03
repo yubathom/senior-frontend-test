@@ -1,4 +1,8 @@
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true
+  },
   theme: {
     fontFamily: {
       sans: ['ProximaNova', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif']
@@ -12,6 +16,9 @@ module.exports = {
         'accent-red': '#FF7B92',
         'accent-yellow': '#FFC062',
         'accent-background': '#FFFFFF'
+      },
+      boxShadow: {
+        'micro': '0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1)'
       }
   },
   purge: {
@@ -24,5 +31,10 @@ module.exports = {
       'nuxt.config.js'
       ]
     }
+  },
+  variants: {
+    backgroundColor: ['hover', 'disabled'],
+    border: ['focus'],
+    opacity: ['disabled']
   }
 }

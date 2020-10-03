@@ -1,10 +1,23 @@
 <template>
   <section class="bg-white rounded-xl shadow-xl rounded-lg p-6">
     <div class="flex justify-between">
-      <h3 class="font-bold text-primary-darkblue">Edit location</h3><nuxt-link tag="button" :to="{ path: '/' }"><icon-close /></nuxt-link>
+      <h3 class="font-bold text-primary-darkblue">Edit location</h3>
+      <nuxt-link tag="button" :to="{ path: '/' }"><icon-close /></nuxt-link>
     </div>
     <form-color-selector :main-color="fields.color" @setColor="setField" />
     <form>
+      <form-input
+        label="Title"
+        name="title"
+        placeholder="Your title"
+        :required="true"
+      />
+      <form-button
+        class="mt-4"
+        title="Button"
+        :disabled="false"
+        @click="handleClick"
+      />
     </form>
   </section>
 </template>
@@ -17,19 +30,22 @@ export default {
       changed: false
     }
   },
-  created ( ) {
+  created () {
     this.fields = { ...this.$route.query }
   },
   methods: {
     setField (key, value) {
       this.changed = true
       this.fields[key] = value
+    },
+    handleClick (e) {
+      console.log(e)
     }
   },
   watch: {
     fields: {
       deep: true,
-      handler(query) {
+      handler (query) {
         if (!this.changed) return
         this.$router.replace({ query })
       }
