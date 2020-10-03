@@ -24,7 +24,7 @@
     </article>
     <article
       v-if="active"
-      class="pt-6 px-6 pb-3 text-primary-darkblue leading-9 shadow-lg rounded-lg opacity-0 transition-opacity duration-300 ease-in-out"
+      class="pt-6 px-6 pb-3 leading-9 shadow-lg rounded-lg opacity-0 transition-opacity duration-300 ease-in-out"
       :class="{ 'opacity-100': activeDelayed }"
     >
       <h3 class="text-xl font-bold">{{ name }}</h3>

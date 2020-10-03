@@ -1,5 +1,5 @@
 <template>
-  <fieldset class="flex flex-col text-base">
+  <fieldset class="flex flex-col text-base mb-6">
     <label :for="name"
       >{{ label }}
       <span class="text-primary-grey" v-if="required">*</span></label
@@ -8,6 +8,8 @@
       :minlength="minlength"
       :placeholder="placeholder"
       :name="name"
+      :initialValue="initialValue"
+      @check="handleInput"
     />
   </fieldset>
 </template>
@@ -24,7 +26,7 @@ export default {
       required: true
     },
     minlength: {
-      type: String,
+      type: Number,
       default: 1
     },
     placeholder: {
@@ -34,6 +36,20 @@ export default {
     required: {
       type: Boolean,
       default: false
+    },
+    initialValue: {
+      type: String,
+      default: ''
+    },
+    type: {
+      validator: function (val) {
+        return ['text', 'email'].includes(val)
+      }
+    }
+  },
+  methods: {
+    handleInput (errorStatus, uid, value) {
+      this.$emit('check', errorStatus, uid, { key: this.name, value })
     }
   }
 }
