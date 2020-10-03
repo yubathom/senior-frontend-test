@@ -2,7 +2,12 @@
   <div>
     <nuxt-link
       tag="div"
-      :to="{ path: '/office/create' }"
+      :to="{
+        path: '/form',
+        query: {
+          create: true
+        }
+      }"
       class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer"
     >
       <p>Add New Location</p>
@@ -16,6 +21,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 import { users } from '~/static/data'
 
 export default {
@@ -26,19 +32,22 @@ export default {
     }
   },
   methods: {
-    deleteCard (toDeleteId) {
+    ...mapActions('ui', ['setTooltip']),
+    async deleteCard (toDeleteId) { // rewrite this for an API call
       const toDeleteIndex = this.users.findIndex(({ id }) => id === toDeleteId)
       this.users[toDeleteIndex].deleted = true
 
-      setTimeout(
+      await setTimeout(
         () => (this.users = this.users.filter(({ id }) => id !== toDeleteId)),
         300
-      )
+      ) 
+
+      this.setTooltip('THE LOCATION HAS BEEN UPDATED')
     },
     editCard (toEditCardId) {
       const query = this.users.find(({ id }) => id === toEditCardId)
       this.$router.push({
-        path: `/office/${toEditCardId}`,
+        path: `/form`,
         query
       })
     }

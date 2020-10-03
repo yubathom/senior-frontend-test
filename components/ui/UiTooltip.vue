@@ -4,18 +4,22 @@
       <p class="flex text-xs text-primary-darkblue items-center">
         <icon-check />{{ message }}
       </p>
-      <!-- <button class=""><icon-close /></button> -->
+      <button @click.prevent="resetTooltip"><icon-close /></button>
     </div>
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'UiTooltip',
   props: {
     message: {
       type: String,
-      default: 'THE LOCATION HAS BEEN UPDATED'
+      retuired: true
     }
+  },
+  methods: {
+    ...mapActions('ui', ['resetTooltip'])
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <section class="bg-white rounded-xl shadow-xl rounded-lg p-6">
     <div class="flex justify-between">
-      <h3 class="font-bold text-primary-darkblue">Edit location</h3>
+      <h3 class="font-bold text-primary-darkblue">{{ pageTitle }}</h3>
       <nuxt-link tag="button" :to="{ path: '/' }"><icon-close /></nuxt-link>
     </div>
     <form class="mt-8">
@@ -12,7 +12,7 @@
       <form-input
         label="Title"
         name="title"
-        placeholder="Your title"
+        placeholder="Headquarters"
         type="text"
         :initialValue="fields.title"
         :required="true"
@@ -26,9 +26,52 @@
         type="text"
         :initialValue="fields.address"
         :required="true"
-        :minlength="3"
+        :minlength="2"
         @check="handleInput"
       />
+      <section class="mt-10">
+        <h4 class="mb-6 pb-3 uppercase text-sm text-accent-blue border-b">Contact information</h4>
+        <form-input
+          label="Full name"
+          name="name"
+          placeholder="John Smith"
+          type="text"
+          :initialValue="fields.name"
+          :required="true"
+          :minlength="2"
+          @check="handleInput"
+        />
+        <form-input
+          label="Job Position"
+          name="role"
+          placeholder="Software Engineer"
+          type="text"
+          :initialValue="fields.role"
+          :required="true"
+          :minlength="2"
+          @check="handleInput"
+        />
+        <form-input
+          label="Email address"
+          name="email"
+          placeholder="name@example.com"
+          type="email"
+          :initialValue="fields.email"
+          :required="true"
+          :minlength="3"
+          @check="handleInput"
+        />
+        <form-input
+          label="Phone"
+          name="phone"
+          placeholder="(xxx) xxx-xxxx"
+          type="phone"
+          :initialValue="fields.phone"
+          :required="true"
+          :minlength="7"
+          @check="handleInput"
+        />
+      </section>
       <form-button
         class="mt-4"
         title="Save"
@@ -40,7 +83,7 @@
 </template>
 <script>
 export default {
-  name: 'IdEdit',
+  name: 'Form',
   data () {
     return {
       fields: {},
@@ -51,6 +94,9 @@ export default {
   computed: {
     disabled () {
       return this.errors.length > 0 || !this.changed
+    },
+    pageTitle () {
+      return this.$route.query.create ? 'New Location' : 'Edit Location'
     }
   },
   created () {
@@ -64,10 +110,8 @@ export default {
 
       this.fields[key] = value
     },
-    handleSave (e) {
-      console.log(e)
-    },
     handleInput (errorStatus, uid, { key, value }) {
+      console.log('handling input')
       this.changed = true
       if (errorStatus && !this.errors.includes(uid)) {
         this.errors.push(uid)
@@ -76,6 +120,9 @@ export default {
         this.errors = this.errors.filter(item => item !== uid)
         this.fields[key] = value
       }
+    },
+    handleSave (e) {
+      console.log(e)
     }
   },
   watch: {

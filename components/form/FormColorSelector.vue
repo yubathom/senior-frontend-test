@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li
-      class="flex justify-center items-center shadow-lg rounded-lg h-32 w-full mt-2 mb-4 cursor-pointer transition-colors duration-300"
+      class="flex justify-center items-center shadow-lg rounded-lg h-32 w-full mt-2 mb-6 cursor-pointer transition-colors duration-300"
       :class="activeBgColor"
       @click="open = !open"
     >
@@ -39,7 +39,7 @@ export default {
   props: {
     mainColor: {
       type: String,
-      required: true
+      default: 'primary-grey'
     },
     colors: {
       type: Array,
