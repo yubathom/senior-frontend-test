@@ -11,3 +11,5 @@ node_modules
 tailwind.full.config.js
 
 dist
+
+coverage

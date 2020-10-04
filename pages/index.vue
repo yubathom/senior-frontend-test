@@ -34,17 +34,15 @@ export default {
   },
   methods: {
     ...mapActions('ui', ['setTooltip', 'resetTooltip']),
-    async deleteCard (toDeleteId) { // todo: rewrite this for an api req
+    async deleteCard (toDeleteId) {
+      // todo: rewrite this for an api req
       const toDeleteIndex = this.users.findIndex(({ id }) => id === toDeleteId)
       this.users[toDeleteIndex].deleted = true
 
-      await setTimeout(
-        () => {
-          this.users = this.users.filter(({ id }) => id !== toDeleteId)
-          this.setTooltip('The location has been deleted')
-          },
-        300
-      ) 
+      await setTimeout(() => {
+        this.users = this.users.filter(({ id }) => id !== toDeleteId)
+        this.setTooltip('The location has been deleted')
+      }, 300)
     },
     editCard (toEditCardId) {
       this.resetTooltip()
@@ -64,6 +62,6 @@ export default {
   transition: {
     name: 'grow'
   },
-   scrollToTop: true
+  scrollToTop: true
 }
 </script>

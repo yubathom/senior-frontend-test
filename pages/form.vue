@@ -5,10 +5,7 @@
       <nuxt-link tag="button" :to="{ path: '/' }"><icon-close /></nuxt-link>
     </div>
     <form class="mt-8">
-      <form-color-selector
-        :main-color="fields.color"
-        @setColor="setField"
-      />
+      <form-color-selector :main-color="fields.color" @setColor="setField" />
       <form-input
         label="Title"
         name="title"
@@ -17,7 +14,7 @@
         :initialValue="fields.title"
         :required="true"
         :minlength="1"
-       @check="handleInput"
+        @check="handleInput"
       />
       <form-input
         label="Enter the address"
@@ -30,7 +27,9 @@
         @check="handleInput"
       />
       <section class="mt-10">
-        <h4 class="mb-6 pb-3 uppercase text-sm text-accent-blue border-b">Contact information</h4>
+        <h4 class="mb-6 pb-3 uppercase text-sm text-accent-blue border-b">
+          Contact information
+        </h4>
         <form-input
           label="Full name"
           name="name"
@@ -107,8 +106,8 @@ export default {
     ...mapActions('ui', ['setTooltip']),
     setField (key, value) {
       this.fields[key] === value
-        ? this.changed = false
-        : this.changed = true
+        ? (this.changed = false)
+        : (this.changed = true)
 
       this.fields[key] = value
     },
@@ -116,18 +115,20 @@ export default {
       this.changed = true
       if (errorStatus && !this.errors.includes(uid)) {
         this.errors.push(uid)
-      }
-      else if (!errorStatus) {
+      } else if (!errorStatus) {
         this.errors = this.errors.filter(item => item !== uid)
         this.fields[key] = value
       }
     },
-    async handleSave () {// todo: rewrite this for an api req
+    async handleSave () {
+      // todo: rewrite this for an api req
       const { $router, setTooltip, $route } = this
 
       await setTimeout(() => {
         $router.push({ path: '/' })
-        const message = $route.query.create ? 'The location has been created' : 'The location has been updated'
+        const message = $route.query.create
+          ? 'The location has been created'
+          : 'The location has been updated'
         setTooltip(message)
       }, 500)
     }

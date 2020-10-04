@@ -54,7 +54,7 @@ export default {
       default: ''
     },
     type: {
-      validator: (val) => ['text', 'email', 'phone'].includes(val)
+      validator: val => ['text', 'email', 'phone'].includes(val)
     }
   },
   data () {
@@ -65,9 +65,9 @@ export default {
   computed: {
     errorMessage () {
       return {
-        'text': 'This field cannot be empty',
-        'email': 'This is not a valid email',
-        'phone': 'This is not a valid phone number'
+        text: 'This field cannot be empty',
+        email: 'This is not a valid email',
+        phone: 'This is not a valid phone number'
       }[this.type]
     }
   },
