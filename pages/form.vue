@@ -76,12 +76,13 @@
         class="mt-4"
         title="Save"
         :disabled="disabled"
-        @click="handleSave"
+        @click.prevent="handleSave"
       />
     </form>
   </section>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'Form',
   data () {
@@ -103,6 +104,7 @@ export default {
     this.fields = { ...this.$route.query }
   },
   methods: {
+    ...mapActions('ui', ['setTooltip']),
     setField (key, value) {
       this.fields[key] === value
         ? this.changed = false
@@ -111,7 +113,6 @@ export default {
       this.fields[key] = value
     },
     handleInput (errorStatus, uid, { key, value }) {
-      console.log('handling input')
       this.changed = true
       if (errorStatus && !this.errors.includes(uid)) {
         this.errors.push(uid)
@@ -121,8 +122,14 @@ export default {
         this.fields[key] = value
       }
     },
-    handleSave (e) {
-      console.log(e)
+    async handleSave () {// todo: rewrite this for an api req
+      const { $router, setTooltip, $route } = this
+
+      await setTimeout(() => {
+        $router.push({ path: '/' })
+        const message = $route.query.create ? 'The location has been created' : 'The location has been updated'
+        setTooltip(message)
+      }, 500)
     }
   },
   watch: {
@@ -133,6 +140,10 @@ export default {
         this.$router.replace({ query })
       }
     }
+  },
+  transition: {
+    name: 'grow',
+    scrollToTop: true
   }
 }
 </script>

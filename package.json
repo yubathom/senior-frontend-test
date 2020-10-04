@@ -5,6 +5,7 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "start": "nuxt start",
+    "serve": "nuxt serve",
     "lint": "prettier-standard ./{*,/**/*}.vue --format"
   },
   "dependencies": {
@@ -13,7 +14,6 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.1.0",
     "node-sass": "^4.14.1",
-    "nuxt-purgecss": "^1.0.0",
     "prettier-standard": "^16.4.1",
     "sass-loader": "^10.0.2"
   }

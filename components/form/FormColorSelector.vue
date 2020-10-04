@@ -15,7 +15,7 @@
         }"
       />
     </li>
-    <transition-group name="grow">
+    <transition-group name="fade">
       <template v-if="open">
         <li v-for="(color, index) in colors" :key="index">
           <button

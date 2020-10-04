@@ -1,6 +1,8 @@
 <template>
   <div class="accent-background py-32 text-primary-darkblue">
-    <ui-tooltip v-if="tooltipDisplay" :message="tooltipMessage" />
+    <transition name="fade">
+      <ui-tooltip v-if="tooltipDisplay" :message="tooltipMessage" />
+    </transition>
     <app-header />
     <nuxt class="max-w-xs mx-auto" />
     <app-footer />

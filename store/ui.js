@@ -1,7 +1,7 @@
-export const state = {
+export const state = () => ({
   tooltipDisplay: false,
   tooltipMessage: ''
-}
+})
 
 export const actions = {
   setTooltip: ({ commit }, message) => {

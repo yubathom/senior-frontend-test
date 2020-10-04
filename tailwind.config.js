@@ -20,6 +20,7 @@ module.exports = {
       boxShadow: {
         'micro': '0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1)'
       }
+    }
   },
   purge: {
     enabled: process.env.NODE_ENV === 'production',
@@ -29,8 +30,25 @@ module.exports = {
       'pages/**/*.vue',
       'plugins/**/*.js',
       'nuxt.config.js'
-      ]
-    }
+      ],
+      options: {
+        whitelist: [
+          'bg-primary-darkblue',
+          'bg-primary-lightgrey',
+          'bg-accent-yellow',
+          'bg-primary-darkblue',
+          'fade',
+          'fade-enter-active',
+          'fade-leave-active',
+          'fade-enter',
+          'fade-leave-to',
+          'grow',
+          'grow-enter-active',
+          'grow-leave-active',
+          'grow-enter',
+          'grow-leave-to'
+        ],
+      }
   },
   variants: {
     backgroundColor: ['hover', 'disabled'],

@@ -1,5 +1,5 @@
 export default {
-  mode: "universal",
+  ssr: false,
   components: true,
   head: {
     title: process.env.npm_package_name || "",
@@ -18,10 +18,5 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   buildModules: ["@nuxtjs/tailwindcss"],
-
-  css: ["~/assets/tailwind.scss"],
-  modules: ["nuxt-purgecss"],
-  purgeCSS: {
-    mode: "postcss",
-  },
+  css: ["~/assets/tailwind.scss", "~/assets/animations.scss"]
 }

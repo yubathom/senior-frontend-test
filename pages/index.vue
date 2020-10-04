@@ -13,6 +13,7 @@
       <p>Add New Location</p>
       <icon-plus />
     </nuxt-link>
+
     <ul>
       <li v-for="user in users" :key="user.id">
         <office-card v-bind="user" @delete="deleteCard" @edit="editCard" />
@@ -32,19 +33,21 @@ export default {
     }
   },
   methods: {
-    ...mapActions('ui', ['setTooltip']),
-    async deleteCard (toDeleteId) { // rewrite this for an API call
+    ...mapActions('ui', ['setTooltip', 'resetTooltip']),
+    async deleteCard (toDeleteId) { // todo: rewrite this for an api req
       const toDeleteIndex = this.users.findIndex(({ id }) => id === toDeleteId)
       this.users[toDeleteIndex].deleted = true
 
       await setTimeout(
-        () => (this.users = this.users.filter(({ id }) => id !== toDeleteId)),
+        () => {
+          this.users = this.users.filter(({ id }) => id !== toDeleteId)
+          this.setTooltip('The location has been deleted')
+          },
         300
       ) 
-
-      this.setTooltip('THE LOCATION HAS BEEN UPDATED')
     },
     editCard (toEditCardId) {
+      this.resetTooltip()
       const query = this.users.find(({ id }) => id === toEditCardId)
       this.$router.push({
         path: `/form`,
@@ -57,6 +60,10 @@ export default {
       item.deleted = false
       return item
     })
-  }
+  },
+  transition: {
+    name: 'grow'
+  },
+   scrollToTop: true
 }
 </script>

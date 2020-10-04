@@ -9,3 +9,5 @@ node_modules
 
 # tailwind
 tailwind.full.config.js
+
+dist
