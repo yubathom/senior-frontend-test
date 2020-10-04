@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormInputHandler properly rendering 1`] = `<input name="test" minlength="3" placeholder="foo" type="text" class="w-full rounded border border-solid p-2 bg-white shadow-micro border-primary-darkblue transition-colors duration-300">`;
+exports[`FormInputHandler is properly rendering 1`] = `<input name="test" minlength="3" placeholder="foo" type="text" class="w-full rounded border border-solid p-2 bg-white shadow-micro border-primary-darkblue transition-colors duration-300">`;

@@ -26,8 +26,14 @@
   </fieldset>
 </template>
 <script>
+import FormInputHandler from '@/components/form/input/FormInputHandler'
+import IconExclamationCircle from '@/components/icons/IconExclamationCircle'
 export default {
   name: 'FormInput',
+  components: {
+    FormInputHandler, // need to declare for proper testing
+    IconExclamationCircle
+  },
   props: {
     name: {
       type: String,

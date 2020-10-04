@@ -12,9 +12,15 @@
   </div>
 </template>
 <script>
+import IconClose from '@/components/icons/IconClose'
+import IconCheck from '@/components/icons/IconCheck'
 import { mapActions, mapState } from 'vuex'
 export default {
   name: 'UiTooltip',
+  components: {// needed to declare to do proper unit testing
+    IconClose,
+    IconCheck
+  },
   computed: {
     ...mapState('ui', [ 'tooltipMessage' ])
   },

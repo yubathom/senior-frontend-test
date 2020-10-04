@@ -34,8 +34,15 @@
   </ul>
 </template>
 <script>
+import IconArrow from '@/components/icons/IconArrow'
+import IconCheck from '@/components/icons/IconCheck'
+
 export default {
   name: 'FormColorSelector',
+  components: {
+    IconArrow,
+    IconCheck
+  },
   props: {
     mainColor: {
       type: String,

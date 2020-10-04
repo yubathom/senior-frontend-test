@@ -3,6 +3,8 @@ export const state = () => ({
   tooltipMessage: ''
 })
 
+export const getters = {}
+
 export const actions = {
   setTooltip: ({ commit }, message) => {
     commit('SET', { data: true, key: 'tooltipDisplay' })

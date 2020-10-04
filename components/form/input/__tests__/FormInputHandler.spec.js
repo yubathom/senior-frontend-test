@@ -12,23 +12,23 @@ describe('FormInputHandler', () => {
 
   const wrapper = propsData => mount(FormInputHandler, { propsData })
 
-  test('properly rendering', () => {
+  it('is properly rendering', () => {
     expect(wrapper(propsData).html()).toMatchSnapshot()
   })
 
-  test('test a valid text input', () => {
-    const vm = wrapper(propsData).vm
+  it('test a valid text input', () => {
+    const { vm } = wrapper(propsData)
     expect(vm.valid).toBe(true)
     expect(vm.error).toBe(false)
   })
-  test('test a invalid text input', () => {
+  it('test a invalid text input', () => {
     let currentProp = propsData
     currentProp.initialValue = 'b' // smaller than current minlength -> 3
 
     const { vm } = wrapper(currentProp)
     expect(vm.valid).toBe(false)
   })
-  test('test a valid email input', () => {
+  it('test a valid email input', () => {
     let currentProp = propsData
     currentProp.type = 'email'
     currentProp.initialValue = 'email@email.com'
@@ -36,7 +36,7 @@ describe('FormInputHandler', () => {
     const { vm } = wrapper(currentProp)
     expect(vm.valid).toBe(true)
   })
-  test('test a invalid email input', () => {
+  it('test a invalid email input', () => {
     let currentProp = propsData
     currentProp.type = 'email'
     currentProp.initialValue = 'not a email'
@@ -44,7 +44,7 @@ describe('FormInputHandler', () => {
     const { vm } = wrapper(currentProp)
     expect(vm.valid).toBe(false)
   })
-  test('test valid phone numbers', () => {
+  it('test valid phone numbers', () => {
     let currentProp = propsData
     currentProp.type = 'phone'
 
@@ -60,7 +60,7 @@ describe('FormInputHandler', () => {
       expect(vm.valid).toBe(true)
     })
   })
-  test('test invalid phone numbers', () => {
+  it('test invalid phone numbers', () => {
     let currentProp = propsData
     currentProp.type = 'phone'
 
