@@ -6,28 +6,20 @@
     <button class="fixed mt-2 p-4 right-0"><icon-close /></button>
     <div class="flex bg-white p-6 justify-center">
       <p class="flex text-xs text-primary-darkblue items-center">
-        <icon-check />{{ message }}
+        <icon-check />{{ tooltipMessage }}
       </p>
     </div>
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'UiTooltip',
-  props: {
-    message: {
-      type: String,
-      retuired: true
-    }
-  },
-  data () {
-    return {
-      fade: false
-    }
+  computed: {
+    ...mapState('ui', [ 'tooltipMessage' ])
   },
   methods: {
-    ...mapActions('ui', ['resetTooltip'])
+    ...mapActions('ui', [ 'resetTooltip' ])
   }
 }
 </script>

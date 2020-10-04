@@ -1,7 +1,7 @@
 <template>
   <div class="accent-background py-32 text-primary-darkblue">
     <transition name="fade">
-      <ui-tooltip v-if="tooltipDisplay" :message="tooltipMessage" />
+      <ui-tooltip v-if="tooltipDisplay" />
     </transition>
     <app-header />
     <nuxt class="max-w-xs mx-auto" />
@@ -14,7 +14,7 @@ export default {
   name: 'Default',
   scrollToTop: true,
   computed: {
-    ...mapState('ui', ['tooltipDisplay', 'tooltipMessage'])
+    ...mapState('ui', ['tooltipDisplay'])
   }
 }
 </script>
