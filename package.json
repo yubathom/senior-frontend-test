@@ -8,7 +8,7 @@
     "serve": "nuxt serve",
     "lint": "prettier-standard ./{*,/**/*}.vue --format",
     "test": "jest",
-    "test:dev": "jest --watch -o",
+    "test:dev": "jest --watch -o --verbose",
     "test:update": "jest --updateSnapshot"
   },
   "dependencies": {
