@@ -5,7 +5,6 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "start": "nuxt start",
-    "serve": "nuxt serve",
     "lint": "prettier-standard ./{*,/**/*}.vue --format",
     "test": "jest",
     "test:dev": "jest --watch -o --verbose",

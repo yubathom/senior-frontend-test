@@ -17,15 +17,16 @@ import IconCheck from '@/components/icons/IconCheck'
 import { mapActions, mapState } from 'vuex'
 export default {
   name: 'UiTooltip',
-  components: {// needed to declare to do proper unit testing
+  components: {
+    // needed to declare to do proper unit testing
     IconClose,
     IconCheck
   },
   computed: {
-    ...mapState('ui', [ 'tooltipMessage' ])
+    ...mapState('ui', ['tooltipMessage'])
   },
   methods: {
-    ...mapActions('ui', [ 'resetTooltip' ])
+    ...mapActions('ui', ['resetTooltip'])
   }
 }
 </script>

@@ -1,4 +1,7 @@
 export default {
+  router: {
+    base: process.env.CI ? '/senior-frontend-test' : '/'
+  },
   ssr: false,
   components: true,
   head: {

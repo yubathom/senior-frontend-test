@@ -1,3 +1,57 @@
+Hi!
+
+I really liked to doing this. I think got better at tailwind after doing this.
+
+I made some very basic unit tests for some of the key components of the form. I've used jest and vue-test-utils to do this.
+
+![pony_unit](https://user-images.githubusercontent.com/4117768/95041838-38166500-06ae-11eb-8b07-d700031037b2.png)
+> `npm run test`
+
+<br>
+
+Also made some e2e test using cypress and used this challenge tasks as the test assertions (check this [gif](https://user-images.githubusercontent.com/4117768/95041659-b9212c80-06ad-11eb-8b54-3ce40199bf27.gif)).
+<br>
+<br>
+
+![e2e_spec](https://user-images.githubusercontent.com/4117768/95041655-b7576900-06ad-11eb-9ff9-f543e1f07097.png)
+> `npm run test:e2e:open` - opening the browser or
+> `npm run test:e2e` without the browser.
+
+
+<br>
+
+**Extra feature**<br>
+I've parsed the form fields at the url using watcher functions and vue router so the user don't lose inputed data:
+
+![url](https://user-images.githubusercontent.com/4117768/95042840-7feabb80-06b1-11eb-8bb3-7d13994dc8cf.gif)
+
+
+### Other instructions
+```bash
+# dev
+npm run dev
+
+# build static assets. I am not using ssr to deploy it to gh-pages
+npm run generate
+
+# unit tests
+npm run test
+
+# e2e tests
+npm run test:e2e
+
+```
+
+You can check the [build of this website](http://yubathom.github.io/senior-frontend-test) deployed at gh-pages. I've used travis-ci to do this.
+
+
+
+<br><br><hr>
+
+
+
+
+
 ![Dog and Pony Studios](https://www.dogandponystudios.com/app/themes/dps/assets/public/images/logo-fbe89868bd.svg)
 
 # Senior Frontend Developer Test

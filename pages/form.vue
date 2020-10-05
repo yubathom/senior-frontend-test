@@ -96,7 +96,7 @@ export default {
       return this.errors.length > 0 || !this.changed || this.emptyFields
     },
     pageTitle () {
-      return this.$route.query.edit ? 'Edit Location' :'New Location'
+      return this.$route.query.edit ? 'Edit Location' : 'New Location'
     },
     emptyFields () {
       return Object.values(this.fields).includes('')
