@@ -42,7 +42,7 @@ npm run test:e2e
 
 ```
 
-You can check the [build of this website](http://yubathom.github.io/senior-frontend-test) deployed at gh-pages. I've used travis-ci to do this.
+You can check the [build of this website](http://yubathom.github.io/senior-frontend-test/) deployed at gh-pages. I've used travis-ci to do this.
 
 
 
