@@ -5,7 +5,7 @@
       :to="{
         path: '/form',
         query: {
-          create: true
+          ...userSchema
         }
       }"
       class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer"
@@ -23,13 +23,14 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
-import { users } from '~/static/data'
+import { users, userSchema } from '~/static/data'
 
 export default {
   name: 'Ofices',
   data () {
     return {
-      users: []
+      users: [],
+      userSchema
     }
   },
   methods: {
@@ -49,7 +50,10 @@ export default {
       const query = this.users.find(({ id }) => id === toEditCardId)
       this.$router.push({
         path: `/form`,
-        query
+        query: {
+          edit: true,
+          ...query
+        }
       })
     }
   },

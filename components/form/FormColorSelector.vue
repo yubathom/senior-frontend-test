@@ -15,22 +15,24 @@
         }"
       />
     </li>
-    <transition-group name="fade">
-      <template v-if="open">
-        <li v-for="(color, index) in colors" :key="index">
-          <button
-            class="flex justify-center items-center h-32 w-full my-2 rounded-lg"
-            :class="`bg-${color}`"
-            @click.prevent="change(index)"
-          >
-            <icon-check
-              v-if="index === selectedIndex"
-              class="transform scale-125"
-            />
-          </button>
-        </li>
-      </template>
-    </transition-group>
+    <li>
+      <transition-group name="fade" tag="ul">
+        <template v-if="open">
+          <li v-for="(color, index) in colors" :key="index">
+            <button
+              class="flex justify-center items-center h-32 w-full my-2 rounded-lg"
+              :class="`bg-${color}`"
+              @click.prevent="change(index)"
+            >
+              <icon-check
+                v-if="index === selectedIndex"
+                class="transform scale-125"
+              />
+            </button>
+          </li>
+        </template>
+      </transition-group>
+    </li>
   </ul>
 </template>
 <script>

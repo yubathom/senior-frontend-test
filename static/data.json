@@ -60,5 +60,14 @@
       "phone": "(808) 555-0111",
       "color": "accent-blue"
     }
-  ]
+  ],
+  "userSchema": {
+    "title": "",
+    "address": "",
+    "name": "",
+    "role": "",
+    "email": "",
+    "phone": "",
+    "color": "primary-grey"
+  }
 }

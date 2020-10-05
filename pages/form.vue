@@ -93,10 +93,13 @@ export default {
   },
   computed: {
     disabled () {
-      return this.errors.length > 0 || !this.changed
+      return this.errors.length > 0 || !this.changed || this.emptyFields
     },
     pageTitle () {
-      return this.$route.query.create ? 'New Location' : 'Edit Location'
+      return this.$route.query.edit ? 'Edit Location' :'New Location'
+    },
+    emptyFields () {
+      return Object.values(this.fields).includes('')
     }
   },
   created () {
@@ -126,9 +129,9 @@ export default {
 
       await setTimeout(() => {
         $router.push({ path: '/' })
-        const message = $route.query.create
-          ? 'The location has been created'
-          : 'The location has been updated'
+        const message = $route.query.edit
+          ? 'The location has been updated'
+          : 'The location has been created'
         setTooltip(message)
       }, 500)
     }

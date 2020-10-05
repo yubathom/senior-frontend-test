@@ -13,3 +13,6 @@ tailwind.full.config.js
 dist
 
 coverage
+
+cypress/screenshots/**/*
+cypress/integration/examples/
