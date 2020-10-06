@@ -16,9 +16,9 @@
       />
     </li>
     <li>
-      <transition-group name="fade" tag="ul">
-        <template v-if="open">
-          <li v-for="(color, index) in colors" :key="index">
+      <transition name="fade">
+        <ul v-if="open">
+          <li class="color" v-for="(color, index) in colors" :key="index">
             <button
               class="flex justify-center items-center h-32 w-full my-2 rounded-lg"
               :class="`bg-${color}`"
@@ -30,8 +30,8 @@
               />
             </button>
           </li>
-        </template>
-      </transition-group>
+        </ul>
+      </transition>
     </li>
   </ul>
 </template>
@@ -88,3 +88,26 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.colors-move {
+  // transition: transform 1s;
+  transform: translateX(70px);
+}
+
+.colors-enter-active, .colors-leave-active {
+  position: absolute;
+  transition: all 300ms;
+  z-index: 100;
+  opacity: 1;
+}
+
+.colors-enter, .colors-leave-to {
+  transform: translateY(70px);
+  opacity: 0;
+}
+
+.color {
+
+}
+
+</style>

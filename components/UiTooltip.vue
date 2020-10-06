@@ -1,6 +1,6 @@
 <template>
   <div
-    class="z-10 top-0 fixed w-full h-full border-t-2 border-accent-blue uppercase cursor-pointer"
+    class="z-10 top-0 fixed w-full border-t-2 border-accent-blue uppercase cursor-pointer"
     @click.prevent="resetTooltip"
   >
     <button class="fixed mt-2 p-4 right-0"><icon-close /></button>

@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white rounded-xl shadow-xl rounded-lg p-6">
+  <section class="w-full bg-white rounded-xl shadow-xl rounded-lg p-6">
     <div class="flex justify-between">
       <h3 class="font-bold text-primary-darkblue">{{ pageTitle }}</h3>
       <button @click.prevent="goBack"><icon-close /></button>

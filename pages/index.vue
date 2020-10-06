@@ -1,16 +1,21 @@
 <template>
-  <div>
-    <form-index v-if="displayForm" @close="resetForm" :userSchema="userSchema" />
-    <div @click.prevent="setNewForm" class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer" data-test="new-office">
-      <p>Add New Location</p>
-      <icon-plus />
-    </div>
-
-    <ul>
-      <li v-for="user in users" :key="user.id">
-        <office-card v-bind="user" @delete="deleteCard" @edit="editCard" />
-      </li>
-    </ul>
+  <div class="relative">
+    <transition name="grow-up">
+      <form-index v-if="displayForm" @close="resetForm" :userSchema="userSchema" />
+    </transition>
+    <transition name="fade">
+      <div  v-if="!displayForm" @click.prevent="setNewForm" class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer" data-test="new-office">
+        <p>Add New Location</p>
+        <icon-plus />
+      </div>
+    </transition>
+    <transition name="fade">
+      <ul v-if="!displayForm">
+        <li v-for="user in users" :key="user.id">
+          <office-card v-bind="user" @delete="deleteCard" @edit="editCard" />
+        </li>
+      </ul>
+    </transition>
   </div>
 </template>
 <script>
@@ -56,6 +61,7 @@ export default {
           ...userSchema
         }
       })
+      this.userSchema = userSchema
       this.displayForm = true
     },
     resetForm () {
@@ -72,6 +78,10 @@ export default {
 
     if ($route.query.edit && $route.query.id) {
       this.editCard($route.query.id)
+    }
+
+    else if ($route.query.displayForm) {
+      this.displayForm = true
     }
   },
   transition: {
