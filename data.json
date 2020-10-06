@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "title": "Headquarters",
+      "address": "3763 W. Dallas St.",
+      "name": "Hellena John",
+      "role": "Software Tester",
+      "email": "geogia.young@example.com",
+      "phone": "(808) 555-0111",
+      "color": "accent-blue"
+    },
+    {
+      "id": 2,
+      "title": "Headquarters",
+      "address": "3763 W. Dallas St.",
+      "name": "John Helena",
+      "role": "Software Developer",
+      "email": "geogia.young@example.com",
+      "phone": "(808) 555-0111",
+      "color": "accent-yellow"
+    },
+    {
+      "id": 3,
+      "title": "Headquarters",
+      "address": "3763 W. Dallas St.",
+      "name": "John Smith",
+      "role": "Software Developer",
+      "email": "geogia.young@example.com",
+      "phone": "(808) 555-0111",
+      "color": "accent-red"
+    },
+    {
+      "id": 4,
+      "title": "Headquarters",
+      "address": "3763 W. Dallas St.",
+      "name": "John Smith",
+      "role": "Software Developer",
+      "email": "geogia.young@example.com",
+      "phone": "(808) 555-0111",
+      "color": "primary-grey"
+    },
+    {
+      "id": 5,
+      "title": "Headquarters",
+      "address": "3763 W. Dallas St.",
+      "name": "John Smith",
+      "role": "Software Developer",
+      "email": "geogia.young@example.com",
+      "phone": "(808) 555-0111",
+      "color": "primary-darkblue"
+    },
+    {
+      "id": 6,
+      "title": "Headquarters",
+      "address": "3763 W. Dallas St.",
+      "name": "John Smith",
+      "role": "Software Developer",
+      "email": "geogia.young@example.com",
+      "phone": "(808) 555-0111",
+      "color": "accent-blue"
+    }
+  ],
+  "userSchema": {
+    "title": "",
+    "address": "",
+    "name": "",
+    "role": "",
+    "email": "",
+    "phone": "",
+    "color": "primary-grey"
+  }
+}
