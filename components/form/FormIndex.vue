@@ -2,7 +2,7 @@
   <section class="bg-white rounded-xl shadow-xl rounded-lg p-6">
     <div class="flex justify-between">
       <h3 class="font-bold text-primary-darkblue">{{ pageTitle }}</h3>
-      <nuxt-link tag="button" :to="{ path: '/' }"><icon-close /></nuxt-link>
+      <button @click.prevent="goBack"><icon-close /></button>
     </div>
     <form class="mt-8">
       <form-color-selector :main-color="fields.color" @setColor="setField" />
@@ -76,6 +76,7 @@
         title="Save"
         :disabled="disabled"
         @click.prevent="handleSave"
+        data-test="btn-save"
       />
     </form>
   </section>
@@ -83,7 +84,13 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
-  name: 'Form',
+  name: 'FormIndex',
+  props: {
+    userSchema: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
       fields: {},
@@ -103,7 +110,7 @@ export default {
     }
   },
   created () {
-    this.fields = { ...this.$route.query }
+    this.fields = { ...this.userSchema }
   },
   methods: {
     ...mapActions('ui', ['setTooltip']),
@@ -123,6 +130,9 @@ export default {
         this.fields[key] = value
       }
     },
+    goBack (){
+      this.$emit('close')
+    },
     async handleSave () {
       // todo: rewrite this for an api req
       const { $router, setTooltip, $route } = this
@@ -134,6 +144,8 @@ export default {
           : 'The location has been created'
         setTooltip(message)
       }, 500)
+
+      this.goBack()
     }
   },
   watch: {

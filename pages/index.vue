@@ -1,18 +1,10 @@
 <template>
   <div>
-    <nuxt-link
-      tag="div"
-      :to="{
-        path: '/form',
-        query: {
-          ...userSchema
-        }
-      }"
-      class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer"
-    >
+    <form-index v-if="displayForm" @close="resetForm" :userSchema="userSchema" />
+    <div @click.prevent="setNewForm" class="flex items-center justify-between p-4 bg-accent-red text-base text-white rounded-lg shadow-xl cursor-pointer" data-test="new-office">
       <p>Add New Location</p>
       <icon-plus />
-    </nuxt-link>
+    </div>
 
     <ul>
       <li v-for="user in users" :key="user.id">
@@ -29,6 +21,7 @@ export default {
   name: 'Ofices',
   data () {
     return {
+      displayForm: false,
       users: [],
       userSchema
     }
@@ -48,20 +41,38 @@ export default {
     editCard (toEditCardId) {
       this.resetTooltip()
       const query = this.users.find(({ id }) => id === toEditCardId)
-      this.$router.push({
-        path: `/form`,
+      this.$router.replace({
         query: {
           edit: true,
           ...query
         }
       })
+      this.userSchema = query
+      this.displayForm = true
+    },
+    setNewForm () {
+      this.$router.replace({
+        query: {
+          ...userSchema
+        }
+      })
+      this.displayForm = true
+    },
+    resetForm () {
+      this.displayForm = false
+      this.$router.push({ query: {} })
     }
   },
   created () {
+    const { $route } = this
     this.users = users.map(item => {
       item.deleted = false
       return item
     })
+
+    if ($route.query.edit && $route.query.id) {
+      this.editCard($route.query.id)
+    }
   },
   transition: {
     name: 'grow'

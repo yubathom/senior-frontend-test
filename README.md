@@ -1,7 +1,5 @@
 Hi!
 
-I really liked to doing this. I think got better at tailwind after doing this.
-
 I made some very basic unit tests for some of the key components of the form. I've used jest and vue-test-utils to do this.
 
 ![pony_unit](https://user-images.githubusercontent.com/4117768/95041838-38166500-06ae-11eb-8b07-d700031037b2.png)
